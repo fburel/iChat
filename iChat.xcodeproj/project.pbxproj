@@ -52,6 +52,7 @@
 		0CA23E1219E420BF00EB4626 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CA23E1119E420BF00EB4626 /* Twitter.framework */; };
 		0CA23E2119E4758D00EB4626 /* ChatServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA23E2019E4758D00EB4626 /* ChatServiceTest.m */; };
 		0CA23E2419E484B400EB4626 /* ConversationsListviewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA23E2319E484B400EB4626 /* ConversationsListviewModel.m */; };
+		0CA23E2819E496E700EB4626 /* MessagesListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA23E2719E496E700EB4626 /* MessagesListViewModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,8 @@
 		0CA23E2019E4758D00EB4626 /* ChatServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatServiceTest.m; sourceTree = "<group>"; };
 		0CA23E2219E484B400EB4626 /* ConversationsListviewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversationsListviewModel.h; sourceTree = "<group>"; };
 		0CA23E2319E484B400EB4626 /* ConversationsListviewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversationsListviewModel.m; sourceTree = "<group>"; };
+		0CA23E2619E496E700EB4626 /* MessagesListViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesListViewModel.h; sourceTree = "<group>"; };
+		0CA23E2719E496E700EB4626 /* MessagesListViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesListViewModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,6 +282,8 @@
 			children = (
 				0CA23E2219E484B400EB4626 /* ConversationsListviewModel.h */,
 				0CA23E2319E484B400EB4626 /* ConversationsListviewModel.m */,
+				0CA23E2619E496E700EB4626 /* MessagesListViewModel.h */,
+				0CA23E2719E496E700EB4626 /* MessagesListViewModel.m */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -393,6 +398,7 @@
 				0CA23DAA19E3E0C200EB4626 /* AppDelegate.m in Sources */,
 				0CA23DD519E3E32100EB4626 /* Message.m in Sources */,
 				0CA23DAD19E3E0C200EB4626 /* iChat.xcdatamodeld in Sources */,
+				0CA23E2819E496E700EB4626 /* MessagesListViewModel.m in Sources */,
 				0CA23DA719E3E0C200EB4626 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

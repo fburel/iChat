@@ -12,6 +12,8 @@
 #import "UsersTableViewController.h"
 #import "ConversationsListviewModel.h"
 #import "Conversation.h"
+#import "MessagesTableViewController.h"
+
 
 @interface ConversationsTableViewController()
 <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UsersTableViewControllerDelegate>
@@ -161,6 +163,13 @@
     }
     else if ([segue.identifier isEqualToString:@"DETAIL_SEGUE"])
     {
+        NSIndexPath * indexPath = [self.tableView indexPathForCell:sender];
+        
+        Conversation * c = self.viewModel.conversations[indexPath.row];
+        
+        MessagesTableViewController * tv = segue.destinationViewController;
+        
+        tv.conversation = c;
         
     }
 }

@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class Conversation;
+
 @interface MessagesTableViewController : UITableViewController
+
+@property (strong, nonatomic) Conversation * conversation;
 
 @end

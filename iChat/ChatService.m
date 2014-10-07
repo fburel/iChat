@@ -158,8 +158,9 @@
 {
     PFObject * item = [PFObject objectWithClassName:@"Message"];
     item[@"text"] = message.text;
-    item[@"sender"] = [PFObject objectWithoutDataWithClassName:@"Conversation"
-                                                      objectId:conversation.identifier];
+    item[@"sender"] = self.currentUser;
+    item[@"conversation"] = [PFObject objectWithoutDataWithClassName:@"Conversation" objectId:conversation.identifier];
+    
     [item saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         completion(@[@(succeeded)], error);
     }];
