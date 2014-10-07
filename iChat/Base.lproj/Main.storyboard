@@ -33,7 +33,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="rOh-FT-FJD" kind="showDetail" id="uLx-H5-nNn"/>
+                                    <segue destination="rOh-FT-FJD" kind="show" identifier="DETAIL_SEGUE" id="uLx-H5-nNn"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

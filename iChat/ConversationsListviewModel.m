@@ -68,3 +68,19 @@
 }
 
 @end
+
+@implementation Conversation (Display)
+
+- (NSString *)title
+{
+    return [[self.users valueForKeyPath:@"@unionOfObjects.name"] componentsJoinedByString:@", "];
+}
+
+- (NSString *)subtitle
+{
+    return [NSDateFormatter localizedStringFromDate:self.creationDate
+                                          dateStyle:NSDateFormatterLongStyle
+                                          timeStyle:NSDateFormatterMediumStyle];
+}
+
+@end

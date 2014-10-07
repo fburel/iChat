@@ -178,10 +178,9 @@
 				0CA23DDB19E3E74C00EB4626 /* frameworks */,
 				0CA23DA819E3E0C200EB4626 /* AppDelegate.h */,
 				0CA23DA919E3E0C200EB4626 /* AppDelegate.m */,
-				0CA23E2219E484B400EB4626 /* ConversationsListviewModel.h */,
-				0CA23E2319E484B400EB4626 /* ConversationsListviewModel.m */,
 				0CA23E0019E41D1F00EB4626 /* Controller */,
 				0CA23DB119E3E0C200EB4626 /* Main.storyboard */,
+				0CA23E2519E48FCD00EB4626 /* ViewModel */,
 				0CA23DFF19E3F08E00EB4626 /* DataAccess Layer */,
 				0CA23DB419E3E0C200EB4626 /* Images.xcassets */,
 				0CA23DB619E3E0C200EB4626 /* LaunchScreen.xib */,
@@ -273,6 +272,15 @@
 				0CA23E0A19E41D8600EB4626 /* MessagesTableViewController.m */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		0CA23E2519E48FCD00EB4626 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0CA23E2219E484B400EB4626 /* ConversationsListviewModel.h */,
+				0CA23E2319E484B400EB4626 /* ConversationsListviewModel.m */,
+			);
+			name = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

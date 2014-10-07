@@ -83,7 +83,7 @@
 
 - (void)fetchConversations:(FetchedResultBlock)completion
 {
-    PFQuery * query = [PFQuery queryWithClassName:@"Conversations"];
+    PFQuery * query = [PFQuery queryWithClassName:@"Conversation"];
     [query whereKey:@"users" containsAllObjectsInArray:@[self.currentUser]];
     [query includeKey:@"users"];
     
@@ -100,6 +100,8 @@
                 conversation.creationDate = item.createdAt;
                 conversation.identifier = item.objectId;
                 conversation.users = [self parsePFUsers:item[@"users"]];
+                
+                [conversations addObject:conversation];
                 
             }
             
@@ -140,7 +142,7 @@
             
             NSSortDescriptor * sorter = [NSSortDescriptor sortDescriptorWithKey:@"sentDate" ascending:YES];
             
-            NSArray * sortedMessages = [messagesSet sortedArrayUsingDescriptors:sorter];
+            NSArray * sortedMessages = [messagesSet sortedArrayUsingDescriptors:@[sorter]];
             
             completion(sortedMessages, nil);
         }
@@ -150,7 +152,6 @@
         }
     }];
 }
-
 
 
 - (void)sendMessage:(Message *)message toConversation:(Conversation *)conversation completion:(FetchedResultBlock)completion

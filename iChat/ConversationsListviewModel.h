@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@class Conversation;
+#import "Conversation.h"
+
 @class PFUser;
 
 @interface ConversationsListviewModel : NSObject
@@ -26,5 +27,14 @@
 - (void) refresh;
 
 - (void) createConversationInBackground:(NSArray *)users;
+
+@end
+
+
+@interface Conversation (Display)
+
+- (NSString *) title;
+
+- (NSString *) subtitle;
 
 @end

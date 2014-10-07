@@ -10,37 +10,48 @@
 #import "ChatService.h"
 #import <Parse/Parse.h>
 #import "UsersTableViewController.h"
+#import "ConversationsListviewModel.h"
+#import "Conversation.h"
 
 @interface ConversationsTableViewController()
 <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UsersTableViewControllerDelegate>
 
-@property
+@property (strong, nonatomic) ConversationsListviewModel * viewModel;
 
 @end
 
 @implementation ConversationsTableViewController
 
+- (ConversationsListviewModel *)viewModel
+{
+    if(!_viewModel)
+    {
+        _viewModel = [ConversationsListviewModel new];
+    }
+    return _viewModel;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    ChatService * service = [ChatService sharedInstance];
+    [self.viewModel addObserver:self
+                     forKeyPath:@"isBusy"
+                        options:0 context:NULL];
     
-    BOOL userIsLogged = (service.currentUser != nil);
+    self.refreshControl = [[UIRefreshControl alloc]init];
+    [self.refreshControl addTarget:self.viewModel
+                            action:@selector(refresh)
+                  forControlEvents:UIControlEventValueChanged];
     
-    if(userIsLogged)
+    
+    if(self.viewModel.userIsLogged)
     {
-       
+        [self.viewModel refresh];
     }
     else
     {
         [self presentLogginScreen];
     }
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void) presentLogginScreen
@@ -80,17 +91,36 @@
 - (void) userDidLog:(PFUser *)user
 {
     // enregistre l'utilisateur aupres de notre service local
-    ChatService * service = [ChatService sharedInstance];
-    service.currentUser = user;
+    [self.viewModel logParseUser:user];
     
     // Masque l'ecran login
     [self dismissViewControllerAnimated:YES completion:nil];
     
-    // TEMPORAIRE : afficher dans la navBar le nom de l'user
-    self.title = user.username;
+    [self.viewModel refresh];
 }
 
 
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if(object == self.viewModel && [keyPath isEqualToString:@"isBusy"])
+    {
+        [self busyStatusChanged];
+    }
+}
+
+- (void) busyStatusChanged
+{
+    if(self.viewModel.isBusy)
+    {
+        self.title = NSLocalizedString(@"Loading...", nil);
+    }
+    else
+    {
+        self.title = NSLocalizedString(@"Conversations", nil);
+        [self.refreshControl endRefreshing];
+        [self.tableView reloadData];
+    }
+}
 
 #pragma mark - Table view data source
 
@@ -101,13 +131,18 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return self.conversations.count;
+    return self.viewModel.conversations.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    Conversation * c = self.viewModel.conversations[indexPath.row];
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
-    cell.textLabel.text = @"toto";
+    cell.textLabel.text = [c title];
+    cell.detailTextLabel.text = [c subtitle];
+    
     
     return cell;
 }
@@ -124,6 +159,10 @@
         
         tv.delegate = self;
     }
+    else if ([segue.identifier isEqualToString:@"DETAIL_SEGUE"])
+    {
+        
+    }
 }
 
 
@@ -135,25 +174,8 @@
     
     if(users != nil && users.count != 0)
     {
-        ChatService * service = [ChatService sharedInstance];
-        [service createConversationWithUsers:users
-                                  completion:^(NSArray *results, NSError *error)
-        {
-            if(!error)
-            {
-                [self.conversations addObject:results[0]];
-                [self.tableView reloadData];
-            }
-        }];
+        [self.viewModel createConversationInBackground:users];
     }
 }
 
-- (NSMutableArray *)conversations
-{
-    if(!_conversations)
-    {
-        _conversations = [NSMutableArray new];
-    }
-    return _conversations;
-}
 @end
