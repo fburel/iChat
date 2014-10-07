@@ -11,7 +11,7 @@
 @class Conversation;
 @class PFUser;
 
-@interface MessageListViewModel : NSObject
+@interface ConversationsListviewModel : NSObject
 
 @property (readonly) BOOL userIsLogged;
 

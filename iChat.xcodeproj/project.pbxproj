@@ -51,7 +51,7 @@
 		0CA23E1019E420B800EB4626 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CA23E0F19E420B800EB4626 /* Social.framework */; };
 		0CA23E1219E420BF00EB4626 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CA23E1119E420BF00EB4626 /* Twitter.framework */; };
 		0CA23E2119E4758D00EB4626 /* ChatServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA23E2019E4758D00EB4626 /* ChatServiceTest.m */; };
-		0CA23E2419E484B400EB4626 /* MessageListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA23E2319E484B400EB4626 /* MessageListViewModel.m */; };
+		0CA23E2419E484B400EB4626 /* ConversationsListviewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA23E2319E484B400EB4626 /* ConversationsListviewModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,8 +106,8 @@
 		0CA23E0F19E420B800EB4626 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		0CA23E1119E420BF00EB4626 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		0CA23E2019E4758D00EB4626 /* ChatServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatServiceTest.m; sourceTree = "<group>"; };
-		0CA23E2219E484B400EB4626 /* MessageListViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageListViewModel.h; sourceTree = "<group>"; };
-		0CA23E2319E484B400EB4626 /* MessageListViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageListViewModel.m; sourceTree = "<group>"; };
+		0CA23E2219E484B400EB4626 /* ConversationsListviewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversationsListviewModel.h; sourceTree = "<group>"; };
+		0CA23E2319E484B400EB4626 /* ConversationsListviewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversationsListviewModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,8 +178,8 @@
 				0CA23DDB19E3E74C00EB4626 /* frameworks */,
 				0CA23DA819E3E0C200EB4626 /* AppDelegate.h */,
 				0CA23DA919E3E0C200EB4626 /* AppDelegate.m */,
-				0CA23E2219E484B400EB4626 /* MessageListViewModel.h */,
-				0CA23E2319E484B400EB4626 /* MessageListViewModel.m */,
+				0CA23E2219E484B400EB4626 /* ConversationsListviewModel.h */,
+				0CA23E2319E484B400EB4626 /* ConversationsListviewModel.m */,
 				0CA23E0019E41D1F00EB4626 /* Controller */,
 				0CA23DB119E3E0C200EB4626 /* Main.storyboard */,
 				0CA23DFF19E3F08E00EB4626 /* DataAccess Layer */,
@@ -379,7 +379,7 @@
 				0CA23E0719E41D7B00EB4626 /* UsersTableViewController.m in Sources */,
 				0CA23DFD19E3F08800EB4626 /* ChatService.m in Sources */,
 				0CA23E0319E41D6C00EB4626 /* ConversationsTableViewController.m in Sources */,
-				0CA23E2419E484B400EB4626 /* MessageListViewModel.m in Sources */,
+				0CA23E2419E484B400EB4626 /* ConversationsListviewModel.m in Sources */,
 				0CA23DCF19E3E29600EB4626 /* User.m in Sources */,
 				0CA23E0B19E41D8600EB4626 /* MessagesTableViewController.m in Sources */,
 				0CA23DAA19E3E0C200EB4626 /* AppDelegate.m in Sources */,

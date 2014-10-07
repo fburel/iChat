@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 Florian Burel. All rights reserved.
 //
 
-#import "MessageListViewModel.h"
+#import "ConversationsListviewModel.h"
 #import "ChatService.h"
 
-@interface MessageListViewModel ()
+@interface ConversationsListviewModel ()
 
 @property (assign, nonatomic) BOOL isBusy;
 @property (strong, nonatomic) NSArray * conversations;
@@ -18,7 +18,7 @@
 
 @end
 
-@implementation MessageListViewModel
+@implementation ConversationsListviewModel
 
 - (ChatService *)service
 {

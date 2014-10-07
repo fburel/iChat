@@ -14,7 +14,7 @@
 @interface ConversationsTableViewController()
 <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UsersTableViewControllerDelegate>
 
-@property (strong, nonatomic) NSMutableArray * conversations;
+@property
 
 @end
 
