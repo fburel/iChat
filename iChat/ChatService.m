@@ -8,6 +8,10 @@
 
 #import "ChatService.h"
 #import <Parse/Parse.h>
+#import "User.h"
+#import "Conversation.h"
+#import "Message.h"
+
 
 @implementation ChatService
 
@@ -34,18 +38,72 @@
     return self;
 }
 
-- (void)sendMessage:(Message *)message toConversation:(Conversation *)conversation completion:(FetchedResultBlock)completion
+- (NSArray *) parsePFUsers:(NSArray *)objects
 {
+    // parser les resultats
+    NSMutableArray * users = [[NSMutableArray alloc]init];
     
+    for (PFUser * item in objects)
+    {
+        User * newUser = [[User alloc]init];
+        newUser.name = item.username;
+        newUser.identifier = item.objectId;
+        newUser.url = item[@"photoUrl"];
+        
+        [users addObject:newUser];
+    }
+
+    return [users copy];
 }
 
 - (void)fetchAllUsers:(FetchedResultBlock)completion
 {
+    PFQuery * query = [PFUser query];
     
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if(!error)
+        {
+            
+            completion([self parsePFUsers:objects], nil);
+        }
+        else
+        {
+            // retourner l'erreur
+            completion(nil, error);
+        }
+    }];
 }
 
 - (void)fetchConversations:(FetchedResultBlock)completion
 {
+    PFQuery * query = [PFQuery queryWithClassName:@"Conversations"];
+    [query whereKey:@"users" containsAllObjectsInArray:@[self.currentUser]];
+    [query includeKey:@"users"];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        if(!error)
+        {
+            // parser les resultats
+            NSMutableArray * conversations = [[NSMutableArray alloc]init];
+            
+            for (PFObject * item in objects)
+            {
+                Conversation * conversation = [Conversation new];
+                conversation.creationDate = item.createdAt;
+                conversation.identifier = item.objectId;
+                conversation.users = [self parsePFUsers:item[@"users"]];
+                
+            }
+            
+            completion(conversations, nil);
+        }
+        else
+        {
+            // retourner l'erreur
+            completion(nil, error);
+        }
+    }];
     
 }
 
@@ -53,6 +111,15 @@
 {
     
 }
+
+
+
+- (void)sendMessage:(Message *)message toConversation:(Conversation *)conversation completion:(FetchedResultBlock)completion
+{
+    
+}
+
+
 
 - (void)createConversationWithUsers:(NSArray *)users completion:(FetchedResultBlock)completion
 {

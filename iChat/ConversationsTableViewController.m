@@ -10,7 +10,8 @@
 #import "ChatService.h"
 #import <Parse/Parse.h>
 
-@interface ConversationsTableViewController ()
+@interface ConversationsTableViewController()
+<PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
 
 @end
 
@@ -65,16 +66,40 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+#pragma mark - Login & SignUp 
+
+- (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user
+{
+    [self userDidLog:user];
+}
+
+- (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user
+{
+    [self userDidLog:user];
+}
+
+- (void) userDidLog:(PFUser *)user
+{
+    // enregistre l'utilisateur aupres de notre service local
+    ChatService * service = [ChatService sharedInstance];
+    service.currentUser = user;
+    
+    // Masque l'ecran login
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    // TEMPORAIRE : afficher dans la navBar le nom de l'user
+    self.title = user.username;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return 0;
 }
