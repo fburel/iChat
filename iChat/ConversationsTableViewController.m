@@ -29,7 +29,7 @@
     
     if(userIsLogged)
     {
-        // afficher la liste des conversation
+       
     }
     else
     {

@@ -12,6 +12,10 @@
 #import "Conversation.h"
 #import "Message.h"
 
+#define APPLICATION_ID      @"WJzllICtcRTPm2HffXrfhTmrukaWjq0HGmxBamLh"
+#define CLIENT_KEY          @"4hibUxC3WCLP0Yy62RZ5hKVciSVOFSwldB5G02gG"
+
+
 
 @implementation ChatService
 
@@ -32,8 +36,11 @@
 {
     self = [super init];
     if (self) {
-        [Parse setApplicationId:@"hxCeOawMZ9ZNcZzJ5DJvQBBhE4f9siQjAFTuYsSJ"
-                      clientKey:@"jpKyTk0NOp277m5jPw55DRFJ2CzF8F5pAsExzbL9"];
+        
+        [Parse setApplicationId:APPLICATION_ID
+                      clientKey:CLIENT_KEY];
+        
+        
     }
     return self;
 }
@@ -110,19 +117,79 @@
 - (void)fetchMessagesForConversation:(Conversation *)conversation completion:(FetchedResultBlock)completion
 {
     
+    PFQuery * conversationQuery = [PFQuery queryWithClassName:@"Conversation"];
+    [conversationQuery whereKey:@"objectId" equalTo:conversation.identifier];
+    
+    PFQuery * query = [PFQuery queryWithClassName:@"Message"];
+    [query whereKey:@"conversation" matchesQuery:conversationQuery];
+    [query includeKey:@"sender"];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if(!error)
+        {
+            NSMutableSet * messagesSet = [NSMutableSet new];
+            
+            for (PFObject * item in objects)
+            {
+                Message * message = [Message new];
+                message.text = item[@"text"];
+                message.sender = [self parsePFUsers:@[item[@"sender"]]][0];
+                message.sentDate = item.createdAt;
+                [messagesSet addObject:message];
+            }
+            
+            NSSortDescriptor * sorter = [NSSortDescriptor sortDescriptorWithKey:@"sentDate" ascending:YES];
+            
+            NSArray * sortedMessages = [messagesSet sortedArrayUsingDescriptors:sorter];
+            
+            completion(sortedMessages, nil);
+        }
+        else
+        {
+            completion(nil, error);
+        }
+    }];
 }
 
 
 
 - (void)sendMessage:(Message *)message toConversation:(Conversation *)conversation completion:(FetchedResultBlock)completion
 {
-    
+    PFObject * item = [PFObject objectWithClassName:@"Message"];
+    item[@"text"] = message.text;
+    item[@"sender"] = [PFObject objectWithoutDataWithClassName:@"Conversation"
+                                                      objectId:conversation.identifier];
+    [item saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        completion(@[@(succeeded)], error);
+    }];
 }
 
 
 
 - (void)createConversationWithUsers:(NSArray *)users completion:(FetchedResultBlock)completion
 {
+    PFObject * item = [PFObject objectWithClassName:@"Conversation"];
+    
+    NSMutableArray * userArray = [NSMutableArray new];
+    for (User * user in users) {
+        id tempUser = [PFUser objectWithoutDataWithObjectId:user.identifier];
+        [userArray addObject:tempUser];
+    }
+    
+    [item addObjectsFromArray:userArray forKey:@"users"];
+    
+    [item saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        
+        if(succeeded)
+        {
+            completion(@[@(succeeded)], nil);
+        }
+        else
+        {
+            completion(nil, error);
+        }
+    }];
+    
     
 }
 @end

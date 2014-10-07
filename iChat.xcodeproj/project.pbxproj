@@ -13,7 +13,6 @@
 		0CA23DB319E3E0C200EB4626 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CA23DB119E3E0C200EB4626 /* Main.storyboard */; };
 		0CA23DB519E3E0C200EB4626 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CA23DB419E3E0C200EB4626 /* Images.xcassets */; };
 		0CA23DB819E3E0C200EB4626 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CA23DB619E3E0C200EB4626 /* LaunchScreen.xib */; };
-		0CA23DC419E3E0C200EB4626 /* iChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA23DC319E3E0C200EB4626 /* iChatTests.m */; };
 		0CA23DCF19E3E29600EB4626 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA23DCE19E3E29600EB4626 /* User.m */; };
 		0CA23DD219E3E31800EB4626 /* Conversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA23DD119E3E31800EB4626 /* Conversation.m */; };
 		0CA23DD519E3E32100EB4626 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA23DD419E3E32100EB4626 /* Message.m */; };
@@ -51,6 +50,7 @@
 		0CA23E0E19E420B300EB4626 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CA23E0D19E420B300EB4626 /* Accounts.framework */; };
 		0CA23E1019E420B800EB4626 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CA23E0F19E420B800EB4626 /* Social.framework */; };
 		0CA23E1219E420BF00EB4626 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CA23E1119E420BF00EB4626 /* Twitter.framework */; };
+		0CA23E2119E4758D00EB4626 /* ChatServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA23E2019E4758D00EB4626 /* ChatServiceTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,7 +75,6 @@
 		0CA23DB719E3E0C200EB4626 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		0CA23DBD19E3E0C200EB4626 /* iChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CA23DC219E3E0C200EB4626 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0CA23DC319E3E0C200EB4626 /* iChatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iChatTests.m; sourceTree = "<group>"; };
 		0CA23DCD19E3E29600EB4626 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		0CA23DCE19E3E29600EB4626 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		0CA23DD019E3E31800EB4626 /* Conversation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Conversation.h; sourceTree = "<group>"; };
@@ -105,6 +104,7 @@
 		0CA23E0D19E420B300EB4626 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		0CA23E0F19E420B800EB4626 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		0CA23E1119E420BF00EB4626 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		0CA23E2019E4758D00EB4626 /* ChatServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatServiceTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,7 +202,7 @@
 		0CA23DC019E3E0C200EB4626 /* iChatTests */ = {
 			isa = PBXGroup;
 			children = (
-				0CA23DC319E3E0C200EB4626 /* iChatTests.m */,
+				0CA23E2019E4758D00EB4626 /* ChatServiceTest.m */,
 				0CA23DC119E3E0C200EB4626 /* Supporting Files */,
 			);
 			path = iChatTests;
@@ -388,10 +388,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CA23E0C19E41D8600EB4626 /* MessagesTableViewController.m in Sources */,
-				0CA23DC419E3E0C200EB4626 /* iChatTests.m in Sources */,
 				0CA23DFE19E3F08800EB4626 /* ChatService.m in Sources */,
 				0CA23E0819E41D7B00EB4626 /* UsersTableViewController.m in Sources */,
 				0CA23E0419E41D6C00EB4626 /* ConversationsTableViewController.m in Sources */,
+				0CA23E2119E4758D00EB4626 /* ChatServiceTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -584,6 +584,7 @@
 				0CA23DC919E3E0C200EB4626 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0CA23DCA19E3E0C200EB4626 /* Build configuration list for PBXNativeTarget "iChatTests" */ = {
 			isa = XCConfigurationList;
@@ -592,6 +593,7 @@
 				0CA23DCC19E3E0C200EB4626 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
