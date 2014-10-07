@@ -9,9 +9,12 @@
 #import "ConversationsTableViewController.h"
 #import "ChatService.h"
 #import <Parse/Parse.h>
+#import "UsersTableViewController.h"
 
 @interface ConversationsTableViewController()
-<PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
+<PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UsersTableViewControllerDelegate>
+
+@property (strong, nonatomic) NSMutableArray * conversations;
 
 @end
 
@@ -61,11 +64,6 @@
     [self presentViewController:logInViewController animated:YES completion:NULL];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 #pragma mark - Login & SignUp 
 
@@ -92,70 +90,70 @@
     self.title = user.username;
 }
 
+
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 0;
+    return self.conversations.count;
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
-    // Configure the cell...
+    cell.textLabel.text = @"toto";
     
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    if([segue.identifier isEqualToString:@"SELECT_USERS"])
+    {
+        UsersTableViewController * tv = segue.destinationViewController;
+        
+        tv.delegate = self;
+    }
 }
-*/
 
+
+#pragma mark - UsersTableViewcontrollerDelegate
+
+- (void)usersTableViewController:(id)sender didSelectUsers:(NSArray *)users
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    if(users != nil && users.count != 0)
+    {
+        ChatService * service = [ChatService sharedInstance];
+        [service createConversationWithUsers:users
+                                  completion:^(NSArray *results, NSError *error)
+        {
+            if(!error)
+            {
+                [self.conversations addObject:results[0]];
+                [self.tableView reloadData];
+            }
+        }];
+    }
+}
+
+- (NSMutableArray *)conversations
+{
+    if(!_conversations)
+    {
+        _conversations = [NSMutableArray new];
+    }
+    return _conversations;
+}
 @end

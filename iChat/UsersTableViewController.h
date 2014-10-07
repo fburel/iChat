@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+
+@protocol UsersTableViewControllerDelegate <NSObject>
+
+- (void) usersTableViewController:(id)sender didSelectUsers:(NSArray *)users;
+
+@end
+
 @interface UsersTableViewController : UITableViewController
+
+@property (weak, nonatomic) id<UsersTableViewControllerDelegate> delegate;
 
 @end

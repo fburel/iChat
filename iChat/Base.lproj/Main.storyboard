@@ -13,7 +13,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="pa9-er-Gji" detailTextLabel="i8O-mB-gcg" style="IBUITableViewCellStyleSubtitle" id="o23-nz-tuI">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="pa9-er-Gji" detailTextLabel="i8O-mB-gcg" style="IBUITableViewCellStyleSubtitle" id="o23-nz-tuI">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o23-nz-tuI" id="CHD-KW-dnk">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -45,7 +45,7 @@
                     <navigationItem key="navigationItem" title="Conversations" id="9dR-mv-0XR">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="jzM-un-8DQ">
                             <connections>
-                                <segue destination="OgU-fA-MMK" kind="presentation" id="Afk-0t-7gt"/>
+                                <segue destination="OgU-fA-MMK" kind="presentation" identifier="SELECT_USERS" id="Afk-0t-7gt"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -62,11 +62,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="hOr-Sw-FuZ">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="Select your friends" id="2eJ-4b-MXx">
+                                    <barButtonItem key="leftBarButtonItem" title="Item" systemItem="cancel" id="NpL-mR-kP9">
+                                        <connections>
+                                            <action selector="cancelButtonPressed:" destination="OgU-fA-MMK" id="8fA-zb-BlZ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem key="rightBarButtonItem" systemItem="done" id="0du-gc-DFV">
+                                        <connections>
+                                            <action selector="doneButtonPressed:" destination="OgU-fA-MMK" id="bge-mF-Frk"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </navigationItem>
+                            </items>
+                        </navigationBar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Gzv-MR-4bN">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="QhT-of-IVh" style="IBUITableViewCellStyleDefault" id="Gzv-MR-4bN">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gzv-MR-4bN" id="40a-bs-GR8">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QhT-of-IVh">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -78,7 +104,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FMT-9M-OND" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-480" y="-852"/>
+            <point key="canvasLocation" x="-605" y="-857"/>
         </scene>
         <!--Messages Table View Controller-->
         <scene sceneID="71K-4f-ddO">
