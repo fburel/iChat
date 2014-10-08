@@ -10,35 +10,36 @@
 #import "ChatService.h"
 #import "User.h"
 #import "AvatarCacheService.h"
+#import "SimpleServiceLocator.h"
 
 @interface UsersTableViewController ()
 
 @property (strong, nonatomic) NSArray * users;
 @property (strong, nonatomic) NSMutableArray * selectedUsers;
 
-@property (strong, nonatomic) AvatarCacheService * cacheService;
+@property (readonly) AvatarCacheService * cacheService;
+@property (readonly) ChatService * chatService;
 
 @end
 
 @implementation UsersTableViewController
 
+- (ChatService *)chatService
+{
+    return [[SimpleServiceLocator sharedInstance]serviceWithType:[ChatService class]];
+}
+
 - (AvatarCacheService *)cacheService
 {
-    if(!_cacheService)
-    {
-        _cacheService = [AvatarCacheService new];
-    }
     
-    return _cacheService;
+    return [[SimpleServiceLocator sharedInstance]serviceWithType:[AvatarCacheService class]];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    
-    ChatService * service = [ChatService sharedInstance];
-    [service fetchAllUsers:^(NSArray *results, NSError *error) {
+    [self.chatService fetchAllUsers:^(NSArray *results, NSError *error) {
         self.users = results;
         if(error)
         {

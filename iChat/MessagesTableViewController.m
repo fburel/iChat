@@ -12,10 +12,12 @@
 
 #import "Message.h"
 #import "User.h"
+#import "SimpleServiceLocator.h"
+
 
 @interface MessagesTableViewController ()
 
-@property (strong, nonatomic) MessagesListViewModel * viewModel;
+@property (readonly) MessagesListViewModel * viewModel;
 
 @end
 
@@ -23,12 +25,7 @@
 
 - (MessagesListViewModel *)viewModel
 {
-    if(!_viewModel)
-    {
-        _viewModel = [[MessagesListViewModel alloc]init];
-        
-    }
-    return _viewModel;
+    return [[SimpleServiceLocator sharedInstance]serviceWithType:[MessagesListViewModel class]];
 }
 
 - (void)viewDidLoad

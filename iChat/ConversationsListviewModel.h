@@ -14,8 +14,6 @@
 
 @interface ConversationsListviewModel : NSObject
 
-+ (instancetype) sharedInstance;
-
 @property (readonly) BOOL userIsLogged;
 
 - (void) logParseUser:(PFUser *)user;

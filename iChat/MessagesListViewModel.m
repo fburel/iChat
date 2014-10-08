@@ -11,12 +11,13 @@
 #import "ChatService.h"
 #import "Message.h"
 #import "ConversationsListviewModel.h"
+#import "SimpleServiceLocator.h"
 
 @interface MessagesListViewModel ()
 
 @property (assign, nonatomic) BOOL isBusy;
 @property (strong, nonatomic) NSArray * messages;
-@property (strong, nonatomic) Conversation * conversation;
+@property (readonly) Conversation * conversation;
 
 @property (readonly) ChatService * service;
 
@@ -24,18 +25,15 @@
 
 @implementation MessagesListViewModel
 
-- (instancetype)init
+- (Conversation *)conversation
 {
-    self = [super init];
-    if (self) {
-        self.conversation = [[ConversationsListviewModel sharedInstance]selectedConversation];
-    }
-    return self;
+    ConversationsListviewModel * vm = [[SimpleServiceLocator sharedInstance] serviceWithType:[ConversationsListviewModel class]];
+    return vm.selectedConversation;
 }
 
 - (ChatService *)service
 {
-    return [ChatService sharedInstance];
+    return [[SimpleServiceLocator sharedInstance] serviceWithType:[ChatService class]];
 }
 
 - (NSArray *)messages

@@ -11,6 +11,7 @@
 		0C30571C19E5702E00C00292 /* AvatarCacheService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C30571B19E5702E00C00292 /* AvatarCacheService.m */; };
 		0C30571F19E5791F00C00292 /* ICGravatarOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C30571E19E5791F00C00292 /* ICGravatarOperation.m */; };
 		0C30572119E5935C00C00292 /* tux.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C30572019E5935C00C00292 /* tux.png */; };
+		0C30572519E59D3100C00292 /* SimpleServiceLocator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C30572419E59D3100C00292 /* SimpleServiceLocator.m */; };
 		0CA23DA719E3E0C200EB4626 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA23DA619E3E0C200EB4626 /* main.m */; };
 		0CA23DAA19E3E0C200EB4626 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA23DA919E3E0C200EB4626 /* AppDelegate.m */; };
 		0CA23DAD19E3E0C200EB4626 /* iChat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0CA23DAB19E3E0C200EB4626 /* iChat.xcdatamodeld */; };
@@ -77,6 +78,8 @@
 		0C30571D19E5791F00C00292 /* ICGravatarOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICGravatarOperation.h; sourceTree = "<group>"; };
 		0C30571E19E5791F00C00292 /* ICGravatarOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICGravatarOperation.m; sourceTree = "<group>"; };
 		0C30572019E5935C00C00292 /* tux.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tux.png; sourceTree = "<group>"; };
+		0C30572319E59D3100C00292 /* SimpleServiceLocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleServiceLocator.h; sourceTree = "<group>"; };
+		0C30572419E59D3100C00292 /* SimpleServiceLocator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleServiceLocator.m; sourceTree = "<group>"; };
 		0CA23DA119E3E0C200EB4626 /* iChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CA23DA519E3E0C200EB4626 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CA23DA619E3E0C200EB4626 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -177,6 +180,15 @@
 			name = MD5;
 			sourceTree = "<group>";
 		};
+		0C30572219E59CFA00C00292 /* ServiceLocator */ = {
+			isa = PBXGroup;
+			children = (
+				0C30572319E59D3100C00292 /* SimpleServiceLocator.h */,
+				0C30572419E59D3100C00292 /* SimpleServiceLocator.m */,
+			);
+			name = ServiceLocator;
+			sourceTree = "<group>";
+		};
 		0CA23D9819E3E0C100EB4626 = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +213,7 @@
 				0CA23DDB19E3E74C00EB4626 /* frameworks */,
 				0CA23DA819E3E0C200EB4626 /* AppDelegate.h */,
 				0CA23DA919E3E0C200EB4626 /* AppDelegate.m */,
+				0C30572219E59CFA00C00292 /* ServiceLocator */,
 				0CA23E0019E41D1F00EB4626 /* Controller */,
 				0CA23DB119E3E0C200EB4626 /* Main.storyboard */,
 				0CA23E2519E48FCD00EB4626 /* ViewModel */,
@@ -415,6 +428,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C30572519E59D3100C00292 /* SimpleServiceLocator.m in Sources */,
 				0CA23DD219E3E31800EB4626 /* Conversation.m in Sources */,
 				0CA23E0719E41D7B00EB4626 /* UsersTableViewController.m in Sources */,
 				0CA23DFD19E3F08800EB4626 /* ChatService.m in Sources */,

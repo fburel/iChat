@@ -16,9 +16,6 @@ typedef void(^FetchedResultBlock)(NSArray * results, NSError * error);
 
 @interface ChatService : NSObject
 
-// Singleton
-+ (instancetype) sharedInstance;
-
 // le PFUser loggé
 @property (strong, nonatomic) PFUser * currentUser;
 

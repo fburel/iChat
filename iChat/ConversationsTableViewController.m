@@ -13,12 +13,12 @@
 #import "ConversationsListviewModel.h"
 #import "Conversation.h"
 #import "MessagesTableViewController.h"
-
+#import "SimpleServiceLocator.h"
 
 @interface ConversationsTableViewController()
 <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UsersTableViewControllerDelegate>
 
-@property (strong, nonatomic) ConversationsListviewModel * viewModel;
+@property (readonly) ConversationsListviewModel * viewModel;
 
 @end
 
@@ -26,11 +26,7 @@
 
 - (ConversationsListviewModel *)viewModel
 {
-    if(!_viewModel)
-    {
-        _viewModel = [ConversationsListviewModel sharedInstance];
-    }
-    return _viewModel;
+    return [[SimpleServiceLocator sharedInstance]serviceWithType:[ConversationsListviewModel class]];
 }
 
 - (void)viewDidLoad {
