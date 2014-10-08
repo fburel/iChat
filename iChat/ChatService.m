@@ -180,8 +180,9 @@
         id tempUser = [PFUser objectWithoutDataWithObjectId:user.identifier];
         [userArray addObject:tempUser];
     }
+    [userArray addObject:self.currentUser];
     
-    [item addObjectsFromArray:userArray forKey:@"users"];
+    [item addUniqueObjectsFromArray:userArray forKey:@"users"];
     
     [item saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         
