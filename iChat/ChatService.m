@@ -55,7 +55,7 @@
         User * newUser = [[User alloc]init];
         newUser.name = item.username;
         newUser.identifier = item.objectId;
-        newUser.url = item[@"photoUrl"];
+        newUser.email = item.email;
         
         [users addObject:newUser];
     }
