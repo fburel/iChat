@@ -13,7 +13,7 @@
 
 @interface MessagesListViewModel : NSObject
 
-- (instancetype) initWithConversation:(Conversation *)conversation;
+
 
 @property (readonly) BOOL isBusy;
 @property (strong, nonatomic) NSString * text;

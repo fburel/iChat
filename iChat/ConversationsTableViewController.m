@@ -28,7 +28,7 @@
 {
     if(!_viewModel)
     {
-        _viewModel = [ConversationsListviewModel new];
+        _viewModel = [ConversationsListviewModel sharedInstance];
     }
     return _viewModel;
 }
@@ -161,15 +161,13 @@
         
         tv.delegate = self;
     }
-    else if ([segue.identifier isEqualToString:@" "])
+    else if ([segue.identifier isEqualToString:@"DETAIL_SEGUE"])
     {
         NSIndexPath * indexPath = [self.tableView indexPathForCell:sender];
         
         Conversation * c = self.viewModel.conversations[indexPath.row];
         
-        MessagesTableViewController * tv = segue.destinationViewController;
-        
-        tv.conversation = c;
+        self.viewModel.selectedConversation = c;
         
     }
 }

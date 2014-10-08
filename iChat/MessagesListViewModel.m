@@ -10,6 +10,7 @@
 
 #import "ChatService.h"
 #import "Message.h"
+#import "ConversationsListviewModel.h"
 
 @interface MessagesListViewModel ()
 
@@ -23,11 +24,11 @@
 
 @implementation MessagesListViewModel
 
-- (instancetype)initWithConversation:(Conversation *)conversation
+- (instancetype)init
 {
     self = [super init];
     if (self) {
-        self.conversation = conversation;
+        self.conversation = [[ConversationsListviewModel sharedInstance]selectedConversation];
     }
     return self;
 }

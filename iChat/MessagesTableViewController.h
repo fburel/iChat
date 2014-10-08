@@ -12,6 +12,4 @@
 
 @interface MessagesTableViewController : UITableViewController
 
-@property (strong, nonatomic) Conversation * conversation;
-
 @end

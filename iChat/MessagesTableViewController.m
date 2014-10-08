@@ -25,7 +25,7 @@
 {
     if(!_viewModel)
     {
-        _viewModel = [[MessagesListViewModel alloc]initWithConversation:self.conversation];
+        _viewModel = [[MessagesListViewModel alloc]init];
         
     }
     return _viewModel;
@@ -35,9 +35,6 @@
 {
     [super viewDidLoad];
     
-    [self.viewModel addObserver:self
-                     forKeyPath:@"isBusy"
-                        options:0 context:NULL];
     
     self.refreshControl = [[UIRefreshControl alloc]init];
     [self.refreshControl addTarget:self.viewModel
@@ -50,6 +47,22 @@
 
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.viewModel addObserver:self
+                     forKeyPath:@"isBusy"
+                        options:0 context:NULL];
+
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    @try {
+    [self.viewModel removeObserver:self forKeyPath:@"isBusy"];
+    }
+    @catch (NSException *exception) {
+    }
+}
 - (IBAction)composeButtonPressed:(id)sender {
     
    

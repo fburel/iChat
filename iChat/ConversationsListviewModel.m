@@ -25,6 +25,14 @@
     return [ChatService sharedInstance];
 }
 
++ (instancetype)sharedInstance {
+    static id __SharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        __SharedInstance = [[self alloc] init];
+    });
+    return __SharedInstance;
+}
 - (NSArray *)conversations
 {
     if(!_conversations)

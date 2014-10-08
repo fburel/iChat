@@ -14,6 +14,8 @@
 
 @interface ConversationsListviewModel : NSObject
 
++ (instancetype) sharedInstance;
+
 @property (readonly) BOOL userIsLogged;
 
 - (void) logParseUser:(PFUser *)user;
@@ -23,6 +25,8 @@
 
 // Stocke la liste des conversation
 @property (readonly, strong, nonatomic) NSArray * conversations;
+
+@property (strong, nonatomic) Conversation * selectedConversation;
 
 - (void) refresh;
 
