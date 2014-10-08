@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C30571819E56D5100C00292 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C30571719E56D5100C00292 /* NSString+MD5.m */; };
 		0CA23DA719E3E0C200EB4626 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA23DA619E3E0C200EB4626 /* main.m */; };
 		0CA23DAA19E3E0C200EB4626 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA23DA919E3E0C200EB4626 /* AppDelegate.m */; };
 		0CA23DAD19E3E0C200EB4626 /* iChat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0CA23DAB19E3E0C200EB4626 /* iChat.xcdatamodeld */; };
@@ -66,6 +67,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C30571619E56D5100C00292 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
+		0C30571719E56D5100C00292 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
 		0CA23DA119E3E0C200EB4626 /* iChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CA23DA519E3E0C200EB4626 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CA23DA619E3E0C200EB4626 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -157,6 +160,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C30571919E56D5600C00292 /* MD5 */ = {
+			isa = PBXGroup;
+			children = (
+				0C30571619E56D5100C00292 /* NSString+MD5.h */,
+				0C30571719E56D5100C00292 /* NSString+MD5.m */,
+			);
+			name = MD5;
+			sourceTree = "<group>";
+		};
 		0CA23D9819E3E0C100EB4626 = {
 			isa = PBXGroup;
 			children = (
@@ -251,6 +263,7 @@
 				0CA23DDC19E3E76900EB4626 /* AudioToolbox.framework */,
 				0CA23DD719E3E74700EB4626 /* Bolts.framework */,
 				0CA23DD819E3E74700EB4626 /* Parse.framework */,
+				0C30571919E56D5600C00292 /* MD5 */,
 			);
 			name = frameworks;
 			sourceTree = "<group>";
@@ -395,6 +408,7 @@
 				0CA23E2419E484B400EB4626 /* ConversationsListviewModel.m in Sources */,
 				0CA23DCF19E3E29600EB4626 /* User.m in Sources */,
 				0CA23E0B19E41D8600EB4626 /* MessagesTableViewController.m in Sources */,
+				0C30571819E56D5100C00292 /* NSString+MD5.m in Sources */,
 				0CA23DAA19E3E0C200EB4626 /* AppDelegate.m in Sources */,
 				0CA23DD519E3E32100EB4626 /* Message.m in Sources */,
 				0CA23DAD19E3E0C200EB4626 /* iChat.xcdatamodeld in Sources */,
