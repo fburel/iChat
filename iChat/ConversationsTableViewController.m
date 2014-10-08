@@ -36,9 +36,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.viewModel addObserver:self
-                     forKeyPath:@"isBusy"
-                        options:0 context:NULL];
+    
     
     self.refreshControl = [[UIRefreshControl alloc]init];
     [self.refreshControl addTarget:self.viewModel
@@ -46,6 +44,30 @@
                   forControlEvents:UIControlEventValueChanged];
     
     
+    }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.viewModel addObserver:self
+                     forKeyPath:@"isBusy"
+                        options:0 context:NULL];
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    @try
+    {
+        [self.viewModel removeObserver:self forKeyPath:@"isBusy"];
+    }
+    @catch(NSError * e)
+    {
+        
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
     if(self.viewModel.userIsLogged)
     {
         [self.viewModel refresh];
@@ -54,8 +76,8 @@
     {
         [self presentLogginScreen];
     }
-}
 
+}
 - (void) presentLogginScreen
 {
     // Create the log in view controller

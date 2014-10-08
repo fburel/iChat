@@ -65,6 +65,33 @@
 }
 - (IBAction)composeButtonPressed:(id)sender {
     
+    NSString * title = NSLocalizedString(@"Entrer your text here", nil);
+    
+    UIAlertController * alert;
+    alert = [UIAlertController alertControllerWithTitle:title
+                                                message:nil
+                                         preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = title;
+    }];
+    
+    NSString * sendButtonTitle = NSLocalizedString(@"send", nil);
+    UIAlertAction * sendAction = [UIAlertAction actionWithTitle:sendButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UITextField * textField = alert.textFields.firstObject;
+        self.viewModel.text = textField.text;
+        [self.viewModel send];
+    }];
+    
+    NSString * cancelButtonTitle = NSLocalizedString(@"Cancel", nil);
+    UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:cancelButtonTitle style:UIAlertActionStyleCancel handler:nil];
+    
+    [alert addAction:sendAction];
+    [alert addAction:cancelAction];
+    
+    [self presentViewController:alert
+                       animated:YES
+                     completion:nil];
    
 }
 
