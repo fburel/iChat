@@ -24,7 +24,7 @@
 
 - (AvatarCacheService *)cacheService
 {
-    if(_cacheService)
+    if(!_cacheService)
     {
         _cacheService = [AvatarCacheService new];
     }
