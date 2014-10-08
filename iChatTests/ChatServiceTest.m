@@ -10,6 +10,9 @@
 #import <XCTest/XCTest.h>
 #import "ChatService.h"
 #import <Parse/Parse.h>
+#import "User.h"
+#import "AvatarCacheService.h"
+#import "ICGravatarOperation.h"
 
 @interface ChatServiceTest : XCTestCase
 
@@ -40,26 +43,33 @@
 }
 
 
-
-
-- (void) testFetchAllUsersReturns
+- (void) testGravatarFetch
 {
     
-     XCTestExpectation *success = [self expectationWithDescription:@"methods returns"];
+    XCTestExpectation * exp = [self expectationWithDescription:@"recupere une image"];
     
-    [self.service fetchAllUsers:^(NSArray *results, NSError *error) {
-        XCTAssertNil(error);
-        XCTAssertTrue(results.count > 0);
+    // Arrange
+    User * florian = [User new];
+    florian.email = @"florian.burel@mac.com";
+    
+    AvatarCacheService * cache = [AvatarCacheService new];
+    
+    // Act
+    [cache downloadAvatarForUser:florian
+                      completion:^
+    {
+        // Assert
+        NSData * data = [cache avatarForUser:florian];
+        XCTAssertNotNil(data);
         
-        [success fulfill];
-        
+        [exp fulfill];
+    
     }];
     
-    // The test will pause here, running the run loop, until the timeout is hit or all expectations are fulfilled.
-    [self waitForExpectationsWithTimeout:30
-                                 handler:^(NSError *error) {
-        // Clean up.
-    }];
+    [self waitForExpectationsWithTimeout:30 handler:nil];
+    
 }
+
+
 
 @end

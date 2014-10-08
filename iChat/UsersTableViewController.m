@@ -9,16 +9,28 @@
 #import "UsersTableViewController.h"
 #import "ChatService.h"
 #import "User.h"
+#import "AvatarCacheService.h"
 
 @interface UsersTableViewController ()
 
 @property (strong, nonatomic) NSArray * users;
 @property (strong, nonatomic) NSMutableArray * selectedUsers;
 
+@property (strong, nonatomic) AvatarCacheService * cacheService;
 
 @end
 
 @implementation UsersTableViewController
+
+- (AvatarCacheService *)cacheService
+{
+    if(_cacheService)
+    {
+        _cacheService = [AvatarCacheService new];
+    }
+    
+    return _cacheService;
+}
 
 - (void)viewDidLoad
 {
@@ -81,6 +93,22 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     cell.textLabel.text = user.name;
+    
+    if([self.cacheService avatarForUser:user])
+    {
+        UIImage * emile = [UIImage imageWithData:[self.cacheService avatarForUser:user]];
+        cell.imageView.image = emile;
+        
+    }
+    else
+    {
+        cell.imageView.image = [UIImage imageNamed:@"tux.png"];
+        
+        [self.cacheService downloadAvatarForUser:user completion:^{
+            [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }];
+    }
+    
     
     // affiche la checkmark si l'utilisateur est selectionné
     BOOL userIsAlreadySelected = [self.selectedUsers containsObject:user];

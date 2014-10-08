@@ -12,11 +12,19 @@
 #import "ICGravatarOperation.h"
 
 @interface AvatarCacheService ()
-@property (strong) NSOperationQueue * asyncQueue;
+@property (strong, nonatomic) NSOperationQueue * asyncQueue;
 @end
 
 @implementation AvatarCacheService
 
+- (NSOperationQueue *)asyncQueue
+{
+    if(!_asyncQueue)
+    {
+        _asyncQueue = [NSOperationQueue new];
+    }
+    return _asyncQueue;
+}
 - (void)registerAvatar:(NSData *)avatarData forUser:(User *)user
 {
    
@@ -41,8 +49,9 @@
     return [NSData dataWithContentsOfURL:url];
 }
 
-- (void) downloadAvatarForUser:(User *)user completion:(dispatch_block_t)completion;
+- (void) downloadAvatarForUser:(User *)user completion:(dispatch_block_t)completion
 {
+    
     ICGravatarOperation * operation = [[ICGravatarOperation alloc]init];
     [operation setUser:user];
     

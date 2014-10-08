@@ -17,4 +17,5 @@
 // Retourne l'avatar de l'utilisateur ou nil
 - (NSData *) avatarForUser:(User *)user;
 
+- (void) downloadAvatarForUser:(User *)user completion:(dispatch_block_t)completion;
 @end
