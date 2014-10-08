@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0C30571819E56D5100C00292 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C30571719E56D5100C00292 /* NSString+MD5.m */; };
+		0C30571C19E5702E00C00292 /* AvatarCacheService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C30571B19E5702E00C00292 /* AvatarCacheService.m */; };
+		0C30571F19E5791F00C00292 /* ICGravatarOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C30571E19E5791F00C00292 /* ICGravatarOperation.m */; };
 		0CA23DA719E3E0C200EB4626 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA23DA619E3E0C200EB4626 /* main.m */; };
 		0CA23DAA19E3E0C200EB4626 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA23DA919E3E0C200EB4626 /* AppDelegate.m */; };
 		0CA23DAD19E3E0C200EB4626 /* iChat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0CA23DAB19E3E0C200EB4626 /* iChat.xcdatamodeld */; };
@@ -69,6 +71,10 @@
 /* Begin PBXFileReference section */
 		0C30571619E56D5100C00292 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
 		0C30571719E56D5100C00292 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
+		0C30571A19E5702E00C00292 /* AvatarCacheService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvatarCacheService.h; sourceTree = "<group>"; };
+		0C30571B19E5702E00C00292 /* AvatarCacheService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvatarCacheService.m; sourceTree = "<group>"; };
+		0C30571D19E5791F00C00292 /* ICGravatarOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICGravatarOperation.h; sourceTree = "<group>"; };
+		0C30571E19E5791F00C00292 /* ICGravatarOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICGravatarOperation.m; sourceTree = "<group>"; };
 		0CA23DA119E3E0C200EB4626 /* iChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CA23DA519E3E0C200EB4626 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CA23DA619E3E0C200EB4626 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -273,6 +279,10 @@
 			children = (
 				0CA23DFB19E3F08800EB4626 /* ChatService.h */,
 				0CA23DFC19E3F08800EB4626 /* ChatService.m */,
+				0C30571A19E5702E00C00292 /* AvatarCacheService.h */,
+				0C30571B19E5702E00C00292 /* AvatarCacheService.m */,
+				0C30571D19E5791F00C00292 /* ICGravatarOperation.h */,
+				0C30571E19E5791F00C00292 /* ICGravatarOperation.m */,
 			);
 			name = "DataAccess Layer";
 			sourceTree = "<group>";
@@ -410,9 +420,11 @@
 				0CA23E0B19E41D8600EB4626 /* MessagesTableViewController.m in Sources */,
 				0C30571819E56D5100C00292 /* NSString+MD5.m in Sources */,
 				0CA23DAA19E3E0C200EB4626 /* AppDelegate.m in Sources */,
+				0C30571C19E5702E00C00292 /* AvatarCacheService.m in Sources */,
 				0CA23DD519E3E32100EB4626 /* Message.m in Sources */,
 				0CA23DAD19E3E0C200EB4626 /* iChat.xcdatamodeld in Sources */,
 				0CA23E2819E496E700EB4626 /* MessagesListViewModel.m in Sources */,
+				0C30571F19E5791F00C00292 /* ICGravatarOperation.m in Sources */,
 				0CA23DA719E3E0C200EB4626 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
