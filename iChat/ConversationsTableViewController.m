@@ -161,7 +161,7 @@
         
         tv.delegate = self;
     }
-    else if ([segue.identifier isEqualToString:@"DETAIL_SEGUE"])
+    else if ([segue.identifier isEqualToString:@" "])
     {
         NSIndexPath * indexPath = [self.tableView indexPathForCell:sender];
         

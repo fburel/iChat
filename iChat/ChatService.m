@@ -67,6 +67,8 @@
 {
     PFQuery * query = [PFUser query];
     
+    [query whereKey:@"objectId" notEqualTo:self.currentUser.objectId];
+    
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if(!error)
         {
@@ -84,6 +86,7 @@
 - (void)fetchConversations:(FetchedResultBlock)completion
 {
     PFQuery * query = [PFQuery queryWithClassName:@"Conversation"];
+    
     [query whereKey:@"users" containsAllObjectsInArray:@[self.currentUser]];
     [query includeKey:@"users"];
     
