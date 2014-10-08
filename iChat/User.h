@@ -11,7 +11,7 @@
 @interface User : NSObject
 
 @property (strong, nonatomic) NSString * name;
-@property (strong, nonatomic) NSURL * url;
 @property (strong, nonatomic) NSString * identifier;
+@property (strong, nonatomic) NSString * email;
 
 @end
