@@ -32,6 +32,11 @@
     NSURL * url = [self urlForEmail:user.email];
     
     [avatarData writeToURL:url atomically:YES];
+    
+    //Empeche la sauvegarde du fichier
+    [url setResourceValue:@YES
+                   forKey:NSURLIsExcludedFromBackupKey
+                    error:nil];
 }
 
 - (NSURL *) urlForEmail:(NSString *)email

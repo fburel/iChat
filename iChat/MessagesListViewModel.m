@@ -62,6 +62,7 @@
 
 - (void)refresh
 {
+    
     self.isBusy = YES;
     [self.service fetchMessagesForConversation:self.conversation
                                     completion:^(NSArray *results, NSError *error)
