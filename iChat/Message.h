@@ -2,18 +2,19 @@
 //  Message.h
 //  iChat
 //
-//  Created by Florian BUREL on 07/10/2014.
+//  Created by Florian BUREL on 09/10/2014.
 //  Copyright (c) 2014 Florian Burel. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-@class User;
 
-@interface Message : NSObject
+@interface Message : NSManagedObject
 
-@property (strong, nonatomic) User * sender;
-@property (strong, nonatomic) NSString * text;
-@property (strong, nonatomic) NSDate * sentDate;
+@property (nonatomic, retain) NSString * text;
+@property (nonatomic, retain) NSDate * sentDatte;
+@property (nonatomic, retain) NSManagedObject *conversation;
+@property (nonatomic, retain) NSManagedObject *sender;
 
 @end

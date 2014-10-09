@@ -12,6 +12,9 @@
 #import "Conversation.h"
 #import "Message.h"
 
+#import "SimpleServiceLocator.h"
+#import "StoreCacheServiceProxyWrapper.h"
+
 #define APPLICATION_ID      @"WJzllICtcRTPm2HffXrfhTmrukaWjq0HGmxBamLh"
 #define CLIENT_KEY          @"4hibUxC3WCLP0Yy62RZ5hKVciSVOFSwldB5G02gG"
 
@@ -19,6 +22,10 @@
 
 @implementation ChatService
 
+- (StoreCacheServiceProxyWrapper *) database
+{
+    return [[SimpleServiceLocator sharedInstance]serviceWithType:[StoreCacheServiceProxyWrapper class]];
+}
 
 - (instancetype)init
 {
@@ -40,9 +47,20 @@
     
     for (PFUser * item in objects)
     {
-        User * newUser = [[User alloc]init];
+        NSString * identifier = item.objectId;
+        
+    
+        User * newUser = [[self database]userWithId:identifier];
+        
+        
+        if(newUser)
+        {
+            // object exist, do nothing
+        }
+        else{
+             newUser = [[self database] createUserWithId:identifier];
+        }
         newUser.name = item.username;
-        newUser.identifier = item.objectId;
         newUser.email = item.email;
         
         [users addObject:newUser];

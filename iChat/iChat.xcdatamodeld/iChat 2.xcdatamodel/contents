@@ -2,11 +2,8 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="13F34" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Conversation" representedClassName="Conversation" syncable="YES">
         <attribute name="creationDate" optional="YES" attributeType="Date" syncable="YES"/>
-        <relationship name="ident" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ConversationId" inverseName="conversation" inverseEntity="ConversationId" syncable="YES"/>
+        <attribute name="identifiers" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="conversation" inverseEntity="Message" syncable="YES"/>
-    </entity>
-    <entity name="ConversationId" syncable="YES">
-        <relationship name="conversation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Conversation" inverseName="ident" inverseEntity="Conversation" syncable="YES"/>
     </entity>
     <entity name="Message" representedClassName="Message" syncable="YES">
         <attribute name="sentDatte" optional="YES" attributeType="Date" syncable="YES"/>
@@ -22,8 +19,7 @@
     </entity>
     <elements>
         <element name="User" positionX="-11" positionY="-18" width="128" height="103"/>
-        <element name="Conversation" positionX="-225" positionY="47" width="128" height="88"/>
+        <element name="Conversation" positionX="-281" positionY="74" width="128" height="88"/>
         <element name="Message" positionX="-18" positionY="144" width="128" height="103"/>
-        <element name="ConversationId" positionX="-450" positionY="162" width="128" height="58"/>
     </elements>
 </model>
